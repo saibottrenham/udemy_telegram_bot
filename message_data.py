@@ -1,4 +1,7 @@
 import datetime
+import logging
+
+logger = logging.getLogger()
 
 
 class ReminderData:
@@ -17,4 +20,9 @@ class ReminderData:
         self.fired = True
 
     def should_be_fired(self):
+        logger.info("Checking if message should be fired")
+        logger.info(self.time < datetime.datetime.now() and not self.fired)
+        logger.info(self.time)
+        logger.info(datetime.datetime.now())
+        logger.info(self.fired)
         return self.time < datetime.datetime.now() and not self.fired
